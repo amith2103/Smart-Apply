@@ -1,0 +1,56 @@
+Update the Smart Apply frontend UI so it looks clearly different from my previous LifeTracker project, and fix these UX issues:
+
+A) NEW UI LOOK (must look different)
+- Change the overall layout style (new header/sidebar style, spacing, typography, card style).
+- Use a new color theme (do NOT reuse the same purple/gradients as LifeTracker).
+- Make the dashboard look more “career / professional”:
+  - Replace playful styling with clean, recruiter-friendly styling.
+  - Use consistent card borders, subtle shadows, and clean spacing.
+- Keep functionality the same, only redesign UI components and styling.
+
+B) FIX CHART CONTAINERS / BORDERS ALIGNMENT
+- On the dashboard, the chart cards (“Application Status” and “Applications Trend”) should have aligned borders and equal padding.
+- Remove weird thick borders and ensure all cards have the same border radius + consistent spacing.
+- Ensure charts are centered and legends do not overflow outside the card.
+
+C) MAKE STAT CARDS CLICKABLE (IMPORTANT)
+Currently clicking Total Applications / Interviews / Offers does nothing.
+Implement this behavior:
+- Clicking “Total Applications” navigates to /applications with no filter (shows all).
+- Clicking “Interviews” navigates to /applications?status=Interviewing
+- Clicking “Offers” navigates to /applications?status=Offer
+- Add a “Rejected” stat card on dashboard too (if not present) and clicking it opens /applications?status=Rejected
+- On the Applications page:
+  - Read query parameters (status, sponsorshipStatus, search, etc.)
+  - Pre-apply filters based on the query param
+  - Show the filtered results automatically.
+
+D) FIX ADD APPLICATION FORM (FULL PAGE, NOT CORNER MODAL)
+Currently the add application form pops up as a small modal in the bottom corner.
+Change it to a dedicated full page route:
+- /applications/new should render the form as a full-page layout, not a modal.
+- /applications/:id/edit should also be a full-page form.
+- The “Add Application” button in sidebar should go to /applications/new.
+- The form should have:
+  - Two-column layout on desktop, single column on mobile
+  - Clear section headings:
+    - Basic Details
+    - Job Details
+    - Follow-up
+    - Visa & Sponsorship (collapsible section)
+  - Sticky header with Save + Cancel buttons at the top
+- After saving:
+  - Redirect to /applications and show a success toast
+
+Constraints:
+- Do not break backend APIs.
+- Do not use mock data.
+- Keep existing database + routes.
+- Only modify frontend and routing behavior unless absolutely required.
+- Ensure the UI is responsive.
+
+Deliverables:
+- Updated Dashboard UI with clickable stat cards.
+- Applications page supports query param filtering.
+- Add/Edit application uses full-page form routes.
+- Chart containers and borders aligned and clean.
