@@ -1,0 +1,80 @@
+I want to enhance the UI/UX of my SmartApply – Job Application Tracker
+dashboard with premium, subtle animations and motivational insights,
+without changing existing data logic or backend behavior.
+
+TECH STACK (do not change):
+- React + TypeScript
+- Tailwind CSS
+- Recharts for charts
+- Lucide icons
+- Existing layout and routing must remain intact
+
+GOALS:
+1) Add a premium "Insight Banner" at the TOP of the Dashboard
+2) Add a compact "Insight / Quote Card" at the BOTTOM-LEFT of the sidebar
+3) Use smooth, professional animations (no flashy effects)
+4) Keep everything recruiter-friendly and production-ready
+
+──────────────────────────────
+FEATURE 1: TOP DASHBOARD INSIGHT BANNER
+──────────────────────────────
+- Display a horizontal insight banner directly below the page title
+- Content example (dynamic or static):
+  "Consistency beats intensity. Track every application."
+- Style:
+  - Rounded-xl container
+  - Soft gradient background (blue/purple tint)
+  - Subtle shadow
+  - Small spark/insight icon on the left
+- Animation:
+  - Fade-in + slide-down on page load
+  - Duration ~300ms
+  - Ease-out transition
+- Must be responsive and not overlap stats cards
+
+──────────────────────────────
+FEATURE 2: SIDEBAR BOTTOM INSIGHT / QUOTE
+──────────────────────────────
+- Place a small insight card at the bottom-left of the sidebar
+- Should stay above the “Add Application” button
+- Content example:
+  Title: INSIGHT
+  Text: "Consistency beats intensity.
+        Track every application."
+- Style:
+  - Dark glassmorphism background
+  - Rounded-2xl
+  - Soft border
+  - Slight glow on hover
+- Animation:
+  - Gentle pulse or hover glow
+  - No infinite animations unless very subtle
+- Should not take too much space or distract
+
+──────────────────────────────
+DESIGN RULES:
+──────────────────────────────
+- No changes to existing charts, stats, or application cards
+- No blocking modals
+- No drastic color palette changes
+- Maintain clean spacing and alignment
+- Must work in light & dark themes (if present)
+
+──────────────────────────────
+OPTIONAL ENHANCEMENTS (Nice-to-have):
+──────────────────────────────
+- Rotate between 2–3 predefined insights daily
+- Add tooltip on hover (“Daily insight”)
+- Animate icon slightly on hover (scale or rotate 3–5%)
+
+OUTPUT EXPECTATION:
+──────────────────────────────
+- Provide React component(s)
+- Show where exactly to place them in the dashboard & sidebar
+- Tailwind classes included
+- Animations implemented using CSS or lightweight React animation
+- Clean, readable code
+
+IMPORTANT:
+Do NOT rewrite the entire frontend.
+Only ADD these enhancements cleanly on top of the existing UI.
