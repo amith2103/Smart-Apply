@@ -1,5 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { LayoutDashboard, Briefcase, PlusCircle } from "lucide-react";
+import { InsightBanner } from "./InsightBanner";
 
 export function Sidebar() {
   const [location] = useLocation();
@@ -38,7 +39,11 @@ export function Sidebar() {
         })}
       </nav>
 
-      <div className="p-3 border-t border-sidebar-border">
+      <div className="mt-auto p-3 space-y-3 border-t border-sidebar-border">
+        <InsightBanner 
+          variant="sidebar" 
+          text="Consistency beats intensity. Track every application." 
+        />
         <Link 
           href="/applications/new"
           className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"

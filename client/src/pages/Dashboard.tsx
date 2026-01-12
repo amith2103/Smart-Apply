@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend } from 'recharts';
 import { Loader2, Briefcase, Users, Trophy, XCircle, HandCoins, AlertTriangle } from "lucide-react";
 import { useLocation } from "wouter";
+import { InsightBanner } from "@/components/InsightBanner";
 
 const STATUS_COLORS = ['#3b82f6', '#8b5cf6', '#22c55e', '#ef4444'];
 const SPONSORSHIP_COLORS = ['#22c55e', '#ef4444', '#f59e0b', '#3b82f6', '#6b7280'];
@@ -76,6 +77,11 @@ export default function Dashboard() {
         <h1 className="text-2xl font-semibold text-foreground">Dashboard</h1>
         <p className="text-muted-foreground text-sm mt-1">Track your job search progress</p>
       </div>
+
+      <InsightBanner 
+        variant="dashboard" 
+        text="Consistency beats intensity. Track every application." 
+      />
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
         {statCards.map((stat) => (
