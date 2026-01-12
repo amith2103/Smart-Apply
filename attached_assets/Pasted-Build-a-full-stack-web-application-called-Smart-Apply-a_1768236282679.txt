@@ -1,0 +1,128 @@
+Build a full-stack web application called “Smart Apply” — a Job Application Tracker with analytics and visa sponsorship tracking.
+
+Goal:
+Help users track job applications, follow-ups, interviews, and visa sponsorship availability using a clean dashboard with real data and charts. This should be portfolio-ready and easy to demo on LinkedIn/GitHub.
+
+Tech stack (must use):
+- Frontend: React + TypeScript
+- Styling: Tailwind CSS (or existing UI system in the template)
+- Backend: Node.js + Express (or existing server folder structure)
+- Database: persistent storage using the project’s existing DB/ORM approach
+- Charts: Recharts (Pie chart + Bar chart)
+- Data fetching: React Query (if already used)
+
+Core Data Model (Job Application):
+Each job application must store:
+- id
+- companyName (string)
+- jobTitle (string)
+- location (string; optional)
+- jobLink (string; optional)
+- dateApplied (date)
+- status (enum): Applied, Interviewing, Offer, Rejected
+- priority (enum): Low, Medium, High (optional but recommended)
+- salaryRange (string; optional)
+- notes (string; optional)
+
+Visa Sponsorship Tracking Fields (required):
+- sponsorshipStatus (enum): Not needed, Required, Offered, Not offered, Unknown
+- workAuthorization (enum): H1B, OPT, CPT, F1, Green Card, Citizen, Other
+- sponsorshipNotes (string; optional)
+
+Follow-up Tracking:
+- followUpDate (date; optional)
+- followUpDone (boolean; optional)
+- A job should be marked “Overdue” in UI if followUpDate is in the past and followUpDone is false.
+
+Pages / Routes:
+1) Dashboard (/)
+- Summary cards:
+  - Total applications
+  - Interviews count
+  - Offers count
+  - Rejections count
+  - Sponsorship Offered count
+  - Overdue follow-ups count
+- Charts (must use real stored data):
+  - Pie chart: application status distribution (Applied/Interviewing/Offer/Rejected)
+  - Pie chart OR stacked bar: sponsorshipStatus distribution (Offered/Not offered/Unknown/Required/Not needed)
+  - Bar chart: applications per week (last 8 weeks) OR per month (last 6 months)
+- A “Today / This Week” section showing applications that need follow-up soon (next 7 days) and those overdue.
+
+2) Applications (/applications)
+- List all applications with:
+  - company name, job title, status, date applied
+  - sponsorship badge (Offered / Not offered / Unknown / Required / Not needed)
+  - follow-up badge (Overdue / Due soon / None)
+- Filters:
+  - status
+  - sponsorshipStatus
+  - workAuthorization
+  - date range (applied dates)
+  - search by company/job title
+- Sorting:
+  - newest applied
+  - follow-up date
+  - priority
+
+3) Add/Edit Application (/applications/new, /applications/:id/edit)
+- Form fields for all model attributes.
+- Keep UX clean:
+  - Put sponsorship fields under an “Additional Details” collapsible section.
+- Validation:
+  - companyName, jobTitle, status, dateApplied required
+  - safe handling for optional fields
+- Edit should update an existing job.
+
+4) Follow-ups (/followups) (optional but recommended)
+- Show a focused list of:
+  - Overdue follow-ups
+  - Due in next 7 days
+- One-click “Mark Follow-up Done”
+
+Backend API Requirements (real data, no mocks):
+Implement REST endpoints (exact names can vary but must support these actions):
+- GET /api/applications (supports filters: status, sponsorshipStatus, workAuthorization, search, date range, sorting)
+- POST /api/applications (create)
+- GET /api/applications/:id (read)
+- PUT /api/applications/:id (update)
+- DELETE /api/applications/:id (delete)
+- GET /api/analytics/dashboard (returns aggregated counts + chart-ready arrays)
+
+Analytics endpoint must return:
+- counts:
+  totalApplications, interviewsCount, offersCount, rejectionsCount,
+  sponsorshipOfferedCount, overdueFollowUpsCount
+- chart datasets:
+  statusBreakdown: [{ name, value }]
+  sponsorshipBreakdown: [{ name, value }]
+  applicationsTrend: [{ periodLabel, count }]  // week or month
+
+Frontend Requirements:
+- Use React Query to fetch:
+  - applications list with filters
+  - dashboard analytics
+- Charts must update based on current filters when applicable.
+- Use reusable components for cards, badges, and tables.
+- Add nice UI details:
+  - rounded buttons, hover effects, consistent spacing, responsive design
+  - status chips for Applied/Interviewing/Offer/Rejected
+  - sponsorship chips for Offered/Not offered/Unknown/etc.
+
+Non-Goals (important constraints):
+- Do not add authentication/login for MVP.
+- Do not use mock/demo chart values. All charts must come from stored DB data.
+- Keep the code organized and readable.
+- Ensure app works on refresh and data persists.
+
+Deliverables:
+- Implement the full working app with all pages and APIs
+- Provide clean folder structure (client/server/shared if template uses it)
+- Add a README.md that explains:
+  features, tech stack, screenshots section, how to run locally, vibe coding note
+
+Success Criteria:
+- User can add job applications in < 30 seconds
+- Dashboard charts reflect real data immediately
+- Filters work for status and visa sponsorship fields
+- Follow-up tracking shows overdue and due-soon items clearly
