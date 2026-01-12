@@ -28,7 +28,10 @@ export const applications = pgTable("applications", {
   followUpDone: boolean("follow_up_done").default(false),
 });
 
-export const insertApplicationSchema = createInsertSchema(applications).omit({ 
+export const insertApplicationSchema = createInsertSchema(applications, {
+  dateApplied: z.coerce.date().default(() => new Date()),
+  followUpDate: z.coerce.date().optional().nullable(),
+}).omit({ 
   id: true,
 });
 
