@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Dashboard from "@/pages/Dashboard";
 import ApplicationsList from "@/pages/ApplicationsList";
+import ApplicationFormPage from "@/pages/ApplicationFormPage";
 import { Layout } from "@/components/Layout";
 
 function Router() {
@@ -14,6 +15,8 @@ function Router() {
       <Switch>
         <Route path="/" component={Dashboard} />
         <Route path="/applications" component={ApplicationsList} />
+        <Route path="/applications/new" component={ApplicationFormPage} />
+        <Route path="/applications/:id/edit" component={ApplicationFormPage} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

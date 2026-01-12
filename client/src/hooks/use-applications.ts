@@ -27,11 +27,11 @@ export function useApplications(filters?: {
   });
 }
 
-export function useApplication(id: number) {
+export function useApplication(id: number | undefined) {
   return useQuery({
     queryKey: [api.applications.get.path, id],
     queryFn: async () => {
-      const url = buildUrl(api.applications.get.path, { id });
+      const url = buildUrl(api.applications.get.path, { id: id! });
       const res = await fetch(url, { credentials: "include" });
       if (res.status === 404) return null;
       if (!res.ok) throw new Error("Failed to fetch application");
