@@ -225,7 +225,12 @@ export default function ApplicationFormPage() {
                         <Input 
                           type="date" 
                           value={field.value ? format(field.value, "yyyy-MM-dd") : ""}
-                          onChange={(e) => field.onChange(e.target.valueAsDate)}
+                          onChange={(e) => {
+                            if (e.target.value) {
+                              const [year, month, day] = e.target.value.split('-').map(Number);
+                              field.onChange(new Date(year, month - 1, day, 12, 0, 0));
+                            }
+                          }}
                           data-testid="input-date-applied"
                         />
                       </FormControl>
@@ -319,7 +324,14 @@ export default function ApplicationFormPage() {
                         <Input 
                           type="date" 
                           value={field.value ? format(field.value, "yyyy-MM-dd") : ""}
-                          onChange={(e) => field.onChange(e.target.valueAsDate)}
+                          onChange={(e) => {
+                            if (e.target.value) {
+                              const [year, month, day] = e.target.value.split('-').map(Number);
+                              field.onChange(new Date(year, month - 1, day, 12, 0, 0));
+                            } else {
+                              field.onChange(null);
+                            }
+                          }}
                           data-testid="input-followup-date"
                         />
                       </FormControl>
